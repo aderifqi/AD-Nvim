@@ -1,0 +1,44 @@
+snippet static "static" w
+{% static '$1' %}
+endsnippet
+
+snippet load "load" A
+{% load $1 %}
+endsnippet
+
+snippet csrf "load" A
+{% csrf_token %}
+endsnippet
+
+snippet url  "url" wA
+{% url '$1' %}
+endsnippet
+
+snippet include "include" wA
+{% include '$1' %}
+endsnippet
+
+snippet loop "for" wA
+{% for $1 in $2 %}
+$0
+{% endfor %}
+endsnippet
+
+snippet ifelse "condition" wA
+{% if $1 %}
+$0
+{% endif %}
+endsnippet
+
+snippet a
+<a href="{% url '$1' %}"${2: class="${3:link}"}>
+$0
+</a>
+endsnippet
+    
+
+
+snippet script 
+<script src="{% static '$1' %}"></script>
+endsnippet
+
