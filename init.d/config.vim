@@ -1,12 +1,11 @@
-"let g:gruvbox_contrast_dark = '(soft)'
-"let g:gruvbox_old ='(0)' 
 colorscheme gruvbox 
+let g:gruvbox_contrast_dark = '(medium)'
 " lexima.vim rule
 let g:lexima_enable_basic_rules = 1
-let g:lightline ={'colorscheme' : "darcula"}
+"
+"let g:lightline ={'colorscheme' : "darcula"}
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
-"let g:airline_theme = 'atomic'
+"let g:airline_powerline_fonts = 1
 let g:airline_theme = 'gruvbox'
 
 "" python venv
@@ -30,9 +29,8 @@ let g:UltiSnipsExpandTrigger="<c-q>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ custem settings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-"snippets define
-
-
+" italic comment
+highlight Comment cterm=italic
 "set tabstop=2
 "set shiftwidth=2
 set expandtab
@@ -89,8 +87,12 @@ map <C-n> :Defx<CR>
 imap qq <Esc>
 map ; :
 nnoremap <leader><leader> <c-^>
+
 " remove hiligh after search
 map  <CR> :nohl<CR>
+
+" Coc
+map <leader>c :CocCommand<CR>
 " FZF
 map  <leader>f :Files<CR>
 map <C-P> :GFiles<CR>

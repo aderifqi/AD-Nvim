@@ -69,7 +69,7 @@ if exists('g:plugs["defx.nvim"]')
     "\ defx#do_action('execute_command')
     nnoremap <silent><buffer><expr> x
     \ defx#do_action('execute_system')
-    nnoremap <silent><buffer><expr> H
+    nnoremap <silent><buffer><expr> I
     \ defx#do_action('toggle_ignored_files')
     nnoremap <silent><buffer><expr> ;
     \ defx#do_action('repeat')

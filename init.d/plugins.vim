@@ -67,4 +67,10 @@ Plug 'liuchengxu/vista.vim'
 Plug 'ryanoasis/vim-devicons'
 " close tag html vim
 Plug 'alvan/vim-closetag'
+
+" ~~~~~~~~~~ for flutter or dart ~~~~~~~~~
+
+Plug 'dart-lang/dart-vim-plugin'
+Plug 'natebosch/vim-lsc'
+Plug 'natebosch/vim-lsc-dart'
 call plug#end()

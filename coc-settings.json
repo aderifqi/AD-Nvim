@@ -1,16 +1,43 @@
 {
-  "python.pythonPath"     : "/home/ad/venv/python/bin/python",
-  "python.setinterpreter" : "/home/ad/venv/python/bin/python",
+  //~~~~~ coc-python ~~~~~
+  //"python.pythonPath"     : "/home/ad/venv/python/bin/python",
+  //"python.setinterpreter" : "/home/ad/venv/python/bin/python",
 
+  //~~~~  coc-pyright ~~~~
+  "pyright.enable":false,
+  "pyright.completion.snippetSupport":true,
+
+  /// php
   //"phpactor.enable": true,
   //"phpactor.path": "/home/ad/bin/phpactor/bin/phpactor",
   
-  //"languageserver": {
-    //"phpactor": {
-        //"command": "phpactor",
-        //"args": ["language-server"],
-        //"trace.server": "verbose",
-        //"filetypes": ["php"]
-    //}
-  //}
+  "languageserver": {
+    "phpactor": {
+        "command": "phpactor",
+        "args": ["language-server"],
+        "trace.server": "verbose",
+        "filetypes": ["php"]
+    },
+     "ccls": {
+            "command": "ccls",
+            "filetypes": [
+                "c",
+                "cpp",
+                "objc",
+                "objcpp"
+            ],
+            "rootPatterns": [
+                ".ccls",
+                "compile_commands.json",
+                ".vim/",
+                ".git/",
+                ".hg/"
+            ],
+            "initializationOptions": {
+                "cache": {
+                    "directory": "/tmp/ccls"
+                }
+            }
+        }
+  }
 }
