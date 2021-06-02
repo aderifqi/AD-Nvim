@@ -29,12 +29,21 @@ let g:UltiSnipsExpandTrigger="<c-q>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ custem settings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+" vim-visual-multi || Multiple cursor editing
+let g:VM_maps = {}
+let g:VM_maps['Find Under']         = '<C-d>'           " replace C-n
+let g:VM_maps['Find Subword Under'] = '<C-d>'           " replace visual C-n
+
+let g:SimpylFold_fold_import = 0
 " italic comment
 highlight Comment cterm=italic
 "set tabstop=2
 "set shiftwidth=2
 set expandtab
 set smartindent
+
+set foldlevel=0
+set foldmethod=manual
 
 "set ttymouse=xterm2
 set mouse=a
@@ -80,6 +89,7 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
+nnoremap <C-s> <C-d>
 "File Explorer 
 "map <C-n> :NERDTreeToggle<CR>  
 map <C-n> :Defx<CR>  

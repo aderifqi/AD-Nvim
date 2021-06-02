@@ -11,7 +11,7 @@ Plug 'SirVer/ultisnips'
 " Snippets are separated from the engine. Add this if you want them:
 Plug 'honza/vim-snippets'
 
-" Better Syntax Support
+" Better syntax-highlighting Support
 Plug 'sheerun/vim-polyglot'
 " File Explorer
 "Plug 'preservim/nerdtree' | 
@@ -68,9 +68,25 @@ Plug 'ryanoasis/vim-devicons'
 " close tag html vim
 Plug 'alvan/vim-closetag'
 
+" Prettier formatter for coc.nvim
+Plug 'neoclide/coc-prettier'
+" Docker 
+Plug 'josa42/coc-docker'
+" Multiple cursor editing
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+" Code folding 
+Plug 'tmhedberg/SimpylFold'
 " ~~~~~~~~~~ for flutter or dart ~~~~~~~~~
 
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'natebosch/vim-lsc'
 Plug 'natebosch/vim-lsc-dart'
+
+" ~~~~~~~~~~ for react native ~~~~~~~~~~~
+Plug 'pangloss/vim-javascript'
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+Plug 'jparise/vim-graphql'
+
 call plug#end()

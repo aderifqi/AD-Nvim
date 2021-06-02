@@ -2,14 +2,30 @@
   //~~~~~ coc-python ~~~~~
   //"python.pythonPath"     : "/home/ad/venv/python/bin/python",
   //"python.setinterpreter" : "/home/ad/venv/python/bin/python",
+  //"python.jediEnabled": false,
+  "python.jediPath": "/home/ad/venv/python/lib/python3.9/site-packages/",
+  "python.linting.pylintEnabled": false,
+  //"python.linting.pylintPath": "/home/ad/venv/python/bin/pylint",
 
   //~~~~  coc-pyright ~~~~
-  "pyright.enable":false,
-  "pyright.completion.snippetSupport":true,
+  "pyright.enable": false,
+  //"pyright.completion.snippetSupport":true,
+  //"python.linting.pylintEnabled": true,
+  //"pyright.disableDiagnostics": true,
+  
+  // ~~~~~ jedi ~~~~~~~~~
+
+  "jedi.enable": false,
+  "jedi.executable.command": "jedi-language-server",
 
   /// php
   //"phpactor.enable": true,
   //"phpactor.path": "/home/ad/bin/phpactor/bin/phpactor",
+
+  "tsserver.enableJavascript": true,
+  "typescript.format.enabled": false,
+  "javascript.format.enabled": true,
+  "javascript.validate.enable": false,
   
   "languageserver": {
     "phpactor": {
