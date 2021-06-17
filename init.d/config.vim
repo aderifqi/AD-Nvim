@@ -1,83 +1,87 @@
-colorscheme gruvbox 
-let g:gruvbox_contrast_dark = '(medium)'
-" lexima.vim rule
+" ===== before plugin loaded =====
+
+" Polyglot
+set nocompatible
+let g:polyglot_disabled = ['vue', 'vue.plugin', 'vuejs']
+
+" ==== Load Plugin ====
+source /home/ad/.config/nvim/init.d/plugins.vim
+
+" ====================================================================== "
+" ===                          Plugin Config                         === "
+" ====================================================================== "
+
+" ==== lexima.vim rule ====
 let g:lexima_enable_basic_rules = 1
-"
-"let g:lightline ={'colorscheme' : "darcula"}
+
+" ==== Airline ====
+"  displays all buffers when there's only one tab open
 let g:airline#extensions#tabline#enabled = 1
-"let g:airline_powerline_fonts = 1
 let g:airline_theme = 'gruvbox'
 
-"" python venv
-let g:python3_host_prog = '/home/ad/venv/python/bin/python'
-"close tag
+" ==== close tag ====
 let g:closetag_filenames = '*.html,*.xhtml,*.phtml'
 let g:closetag_shortcut = '>'
-"NERDTREE
-"let g:NERDTreeGitStatusUseNerdFonts = 1
-"let g:NERDTreeGitStatusConcealBrackets = 0
 
-" python completion enable at startup
-"let g:deoplete#enable_at_startup = 1
-" open the go-to function in split, not another buffer
-"let g:jedi#use_splits_not_buffers = "right"
-" 
-" snippets
+" ==== snippets ====
 let g:UltiSnipsSnippetDirectories=['/home/ad/.config/nvim/UltiSnips']
 let g:UltiSnipsUsePythonVersion = 3
 let g:UltiSnipsExpandTrigger="<c-q>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ custem settings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-" vim-visual-multi || Multiple cursor editing
-let g:VM_maps = {}
-let g:VM_maps['Find Under']         = '<C-d>'           " replace C-n
-let g:VM_maps['Find Subword Under'] = '<C-d>'           " replace visual C-n
 
-let g:SimpylFold_fold_import = 0
-" italic comment
-highlight Comment cterm=italic
-"set tabstop=2
-"set shiftwidth=2
-set expandtab
-set smartindent
+" ==== prettier ====
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
-set foldlevel=0
-set foldmethod=manual
+" ===== coc =====
+" --
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
-"set ttymouse=xterm2
-set mouse=a
-"change fillchars to ' '
-set fillchars+=eob:\ 
-" encoding
-set encoding=utf-8
-" disable mouse
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
 
-" clipboard
-set clipboard+=unnamedplus
-
-set number
-set title
-
-set autowrite
+" -- Use <c-space> to trigger completion.
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
 
 
-"" emmet 
-let g:user_emmet_leader_key=","
 
-" open new split panes to right and below
-set splitright
-set splitbelow
+" ====================================================================== "
+" ===                          Custom Color                          === "
+" ====================================================================== "
+
+" ===== Grubox ==== 
+colorscheme gruvbox 
+let g:gruvbox_contrast_dark = '(medium)'
 
 
-set listchars=tab:\|\ 
-"set listchars+=trail:·
-set listchars+=extends:»
-set listchars+=precedes:«
-set listchars+=nbsp:·
-set listchars+=space:·
-set list
-"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Mapping ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+hi SignifySignAdd guibg=NONE
+hi SignifySignDelete guibg=NONE
+hi SignifySignChange guibg=NONE
+hi SignColumn ctermfg=NONE guibg=NONE
+
+" ====================================================================== "
+" ===                          Key Mapping                           === "
+" ====================================================================== "
+"
+
+" Applying codeAction to the selected region.
+" Example: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
 
 " use ctrl+hjkl to move between split/vsplit panels
 tnoremap <C-h> <C-\><C-n><C-w>h
@@ -125,63 +129,96 @@ let g:fzf_action = {
   \ 'ctrl-v': 'vsplit'
   \}
 
-"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ snippet ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+" ====================================================================== "
+" ===                          Config                                === "
+" ====================================================================== "
+" encoding
+set encoding=utf-8
 
-"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ config nvim ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+" ===== coc-nvim =====
+"
+" Add (Neo)Vim's native statusline support.
+" NOTE: Please see `:h coc-status` for integrations with external plugins that
+" provide custom statusline: lightline.vim, vim-airline.
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
-" turn terminal to normal mode with escape
-" start terminal in insert mode
+" TextEdit might fail if hidden is not set.
+set hidden
+
+" Some servers have issues with backup files, see #649.
+set nobackup
+set nowritebackup
+
+
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+set updatetime=300
+
+" Don't pass messages to |ins-completion-menu|.
+set shortmess+=c
+
+" -----
+" python venv
+let g:python3_host_prog = '/home/ad/venv/python/bin/python'
+
+
+" ----------------------------------------------
+" clear color for signcolumn 
+highlight clear SignColumn
+
+" ==== vim-visual-multi || Multiple cursor editing ====
+let g:VM_maps = {}
+let g:VM_maps['Find Under']         = '<C-d>'           " replace C-n
+let g:VM_maps['Find Subword Under'] = '<C-d>'           " replace visual C-n
+
+let g:SimpylFold_fold_import = 0
+" italic comment
+highlight Comment cterm=italic
+
+set tabstop=2
+set shiftwidth=2
+"set expandtab
+"set smartindent
+
+set foldlevel=0
+set foldmethod=manual
+
+"set ttymouse=xterm2
+set mouse=a
+"change fillchars to ' '
+set fillchars+=eob:\ 
+" clipboard
+set clipboard+=unnamedplus
+
+set number
+set title
+set autowrite
+
+"" emmet 
+let g:user_emmet_leader_key=","
+
+" open new split panes to right and below
+set splitright
+set splitbelow
+
+" tab/space chars
+set listchars=tab:\|\ 
+"set listchars+=trail:·
+set listchars+=extends:»
+set listchars+=precedes:«
+set listchars+=nbsp:·
+set listchars+=space:·
+set list
+
+" ==== open terminal ====
+" start insert when terminal is opened
 au BufEnter * if &buftype == 'terminal' | :startinsert | endif
-" open terminal on ctrl+n
+" open terminal with ctrl+c
 function! OpenTerminal()
   split term://zsh
   resize 10
 endfunction
 nnoremap <c-c> :call OpenTerminal()<CR>
 
-"function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
- "exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
- "exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
-"endfunction
-
-"call NERDTreeHighlightFile('jade', 'green', 'none', 'green', '#151515')
-"call NERDTreeHighlightFile('ini', 'yellow', 'none', 'yellow', '#151515')
-"call NERDTreeHighlightFile('md', 'blue', 'none', '#3366FF', '#151515')
-"call NERDTreeHighlightFile('yml', 'yellow', 'none', 'yellow', '#151515')
-"call NERDTreeHighlightFile('config', 'yellow', 'none', 'yellow', '#151515')
-"call NERDTreeHighlightFile('conf', 'yellow', 'none', 'yellow', '#151515')
-"call NERDTreeHighlightFile('json', 'yellow', 'none', 'yellow', '#151515')
-"call NERDTreeHighlightFile('html', 'yellow', 'none', 'yellow', '#151515')
-"call NERDTreeHighlightFile('styl', 'cyan', 'none', 'cyan', '#151515')
-"call NERDTreeHighlightFile('css', 'cyan', 'none', 'cyan', '#151515')
-"call NERDTreeHighlightFile('coffee', 'Red', 'none', 'red', '#151515')
-"call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
-"call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
-
-"let g:NERDTreeGitStatusIndicatorMapCustom = {
-                "\ 'Modified'  :'M',
-                "\ 'Staged'    :'✚',
-                "\ 'Untracked' :'*',
-                "\ 'Renamed'   :'➜',
-                "\ 'Unmerged'  :'═',
-                "\ 'Deleted'   :'✖',
-                "\ 'Dirty'     :'✗',
-                "\ 'Ignored'   :'☒',
-                "\ 'Clean'     :'✔︎',
-                "\ 'Unknown'   :'?',
-                "\ }
-
-
-
-
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
+" Highlight the symbol and its references when holding the cursor.
+"autocmd CursorHold * silent call CocActionAsync('highlight')

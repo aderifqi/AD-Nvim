@@ -22,11 +22,16 @@
   //"phpactor.enable": true,
   //"phpactor.path": "/home/ad/bin/phpactor/bin/phpactor",
 
+
   "tsserver.enableJavascript": true,
   "typescript.format.enabled": false,
   "javascript.format.enabled": true,
   "javascript.validate.enable": false,
-  
+
+
+  "coc.preferences.formatOnSaveFiletypes": ["css", "markdown", "vue", "js", "html"],
+  "vetur.completion.autoImport":true,
+
   "languageserver": {
     "phpactor": {
         "command": "phpactor",
