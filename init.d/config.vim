@@ -211,6 +211,7 @@ set listchars+=space:·
 set list
 
 " ==== open terminal ====
+tnoremap <Esc> <C-\><C-n>
 " start insert when terminal is opened
 au BufEnter * if &buftype == 'terminal' | :startinsert | endif
 " open terminal with ctrl+c
