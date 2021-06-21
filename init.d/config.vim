@@ -8,7 +8,7 @@ let g:polyglot_disabled = ['vue', 'vue.plugin', 'vuejs']
 source /home/ad/.config/nvim/init.d/plugins.vim
 
 " ====================================================================== "
-" ===                          Plugin Config                         === "
+" ===                          Plugin                                === "
 " ====================================================================== "
 
 " ==== lexima.vim rule ====
@@ -24,7 +24,7 @@ let g:closetag_filenames = '*.html,*.xhtml,*.phtml'
 let g:closetag_shortcut = '>'
 
 " ==== snippets ====
-let g:UltiSnipsSnippetDirectories=['/home/ad/.config/nvim/UltiSnips']
+let g:UltiSnipsSnippetDirectories=['$HOME/.config/nvim/UltiSnips']
 let g:UltiSnipsUsePythonVersion = 3
 let g:UltiSnipsExpandTrigger="<c-q>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
@@ -93,7 +93,6 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-nnoremap <C-s> <C-d>
 "File Explorer 
 "map <C-n> :NERDTreeToggle<CR>  
 map <C-n> :Defx<CR>  
@@ -116,7 +115,7 @@ map <leader>m :tabn<CR>
 map <leader>n :tabp<CR>
 map <leader>k :bp<CR>
 map <leader>l :bn<CR>
-map <leader>d :bd<CR>
+map <leader>bd :bd<CR>
 nnoremap <C-t> :tabnew<CR>
 
 tnoremap <Esc> <C-\><C-n>
@@ -168,17 +167,17 @@ highlight clear SignColumn
 
 " ==== vim-visual-multi || Multiple cursor editing ====
 let g:VM_maps = {}
-let g:VM_maps['Find Under']         = '<C-d>'           " replace C-n
-let g:VM_maps['Find Subword Under'] = '<C-d>'           " replace visual C-n
+let g:VM_maps['Find Under']         = '<leader>d'           " replace C-n
+"let g:VM_maps['Find Subword Under'] = '<C-d>'           " replace visual C-n
 
 let g:SimpylFold_fold_import = 0
 " italic comment
 highlight Comment cterm=italic
 
-set tabstop=2
-set shiftwidth=2
+"set tabstop=2
+"set shiftwidth=2
 "set expandtab
-"set smartindent
+set smartindent
 
 set foldlevel=0
 set foldmethod=manual
@@ -211,7 +210,6 @@ set listchars+=space:·
 set list
 
 " ==== open terminal ====
-tnoremap <Esc> <C-\><C-n>
 " start insert when terminal is opened
 au BufEnter * if &buftype == 'terminal' | :startinsert | endif
 " open terminal with ctrl+c
