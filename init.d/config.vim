@@ -1,4 +1,4 @@
-" ===== before plugin loaded =====
+" hardbefore plugin loaded =====
 
 " Polyglot
 set nocompatible
@@ -19,7 +19,7 @@ let g:lexima_enable_basic_rules = 1
 " ==== Airline ====
 "  displays all buffers when there's only one tab open
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme = 'gruvbox_material'
+"let g:airline_theme = 'gruvbox_material'
 
 " ==== close tag ====
 let g:closetag_filenames = '*.html,*.xhtml,*.phtml'
@@ -65,8 +65,14 @@ endif
 " ====================================================================== "
 
 " ===== Grubox ==== 
+"source $HOME/.config/nvim/colorscheme/gruvbox_material_custom.vim
+let g:gruvbox_material_background = 'medium'
+let g:gruvbox_material_visual = 'grey background'
+let g:gruvbox_material_disable_italic_comment = 0
+let g:gruvbox_material_enable_italic = 1
+let g:gruvbox_material_sign_column_background = 'none'
+let g:gruvbox_material_better_performance = 1
 colorscheme gruvbox-material
-let g:gruvbox_material_background = 'soft'
 "let g:gruvbox_contrast_dark = '(medium)'
 
 
