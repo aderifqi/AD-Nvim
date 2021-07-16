@@ -11,24 +11,26 @@ source /home/ad/.config/nvim/init.d/plugins.vim
 " ===                          Plugin                                === "
 " ====================================================================== "
 
+
+
 " ==== lexima.vim rule ====
 let g:lexima_enable_basic_rules = 1
 
 " ==== Airline ====
 "  displays all buffers when there's only one tab open
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme = 'gruvbox'
+let g:airline_theme = 'gruvbox_material'
 
 " ==== close tag ====
 let g:closetag_filenames = '*.html,*.xhtml,*.phtml'
 let g:closetag_shortcut = '>'
 
 " ==== snippets ====
-let g:UltiSnipsSnippetDirectories=['$HOME/.config/nvim/UltiSnips']
-let g:UltiSnipsUsePythonVersion = 3
-let g:UltiSnipsExpandTrigger="<c-q>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+"let g:UltiSnipsSnippetDirectories=['$HOME/.config/nvim/UltiSnips']
+"let g:UltiSnipsUsePythonVersion = 3
+"let g:UltiSnipsExpandTrigger="<c-q>"
+"let g:UltiSnipsJumpForwardTrigger="<c-b>"
+"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " ==== prettier ====
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
@@ -63,10 +65,12 @@ endif
 " ====================================================================== "
 
 " ===== Grubox ==== 
-colorscheme gruvbox 
-let g:gruvbox_contrast_dark = '(medium)'
+colorscheme gruvbox-material
+let g:gruvbox_material_background = 'soft'
+"let g:gruvbox_contrast_dark = '(medium)'
 
 
+" ===== Git ==== 
 hi SignifySignAdd guibg=NONE
 hi SignifySignDelete guibg=NONE
 hi SignifySignChange guibg=NONE
@@ -76,12 +80,16 @@ hi SignColumn ctermfg=NONE guibg=NONE
 " ===                          Key Mapping                           === "
 " ====================================================================== "
 "
-
+" 
+let mapleader = ","
 " Applying codeAction to the selected region.
 " Example: `<leader>aap` for current paragraph
 xmap <leader>a  <Plug>(coc-codeaction-selected)
 nmap <leader>a  <Plug>(coc-codeaction-selected)
 
+
+" Prettier
+map <leader>P :Prettier<CR>
 
 " use ctrl+hjkl to move between split/vsplit panels
 tnoremap <C-h> <C-\><C-n><C-w>h
@@ -174,9 +182,10 @@ let g:SimpylFold_fold_import = 0
 " italic comment
 highlight Comment cterm=italic
 
-"set tabstop=2
-"set shiftwidth=2
-"set expandtab
+set tabstop=2
+set shiftwidth=2
+
+set expandtab
 set smartindent
 
 set foldlevel=0

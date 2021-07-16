@@ -19,8 +19,8 @@
   "jedi.executable.command": "jedi-language-server",
 
   /// php
-  //"phpactor.enable": true,
-  //"phpactor.path": "/home/ad/bin/phpactor/bin/phpactor",
+  "phpactor.enable": true,
+  "phpactor.path": "/home/ad/bin/phpactor/bin/phpactor",
 
 
   "tsserver.enableJavascript": true,
@@ -28,37 +28,38 @@
   "javascript.format.enabled": true,
   "javascript.validate.enable": false,
 
+  "html.autoClosingTags":true,
 
-  "coc.preferences.formatOnSaveFiletypes": ["css", "markdown", "vue", "js", "html"],
-  "vetur.completion.autoImport":true,
+  "coc.preferences.formatOnSaveFiletypes": ["css", "markdown", "vue", "javascripts", "html"],
+  "vetur.completion.autoImport":true
 
-  "languageserver": {
-    "phpactor": {
-        "command": "phpactor",
-        "args": ["language-server"],
-        "trace.server": "verbose",
-        "filetypes": ["php"]
-    },
-     "ccls": {
-            "command": "ccls",
-            "filetypes": [
-                "c",
-                "cpp",
-                "objc",
-                "objcpp"
-            ],
-            "rootPatterns": [
-                ".ccls",
-                "compile_commands.json",
-                ".vim/",
-                ".git/",
-                ".hg/"
-            ],
-            "initializationOptions": {
-                "cache": {
-                    "directory": "/tmp/ccls"
-                }
-            }
-        }
-  }
+  //"languageserver": {
+    //"phpactor": {
+        //"command": "phpactor",
+        //"args": ["language-server"],
+        //"trace.server": "verbose",
+        //"filetypes": ["php"]
+    //},
+     //"ccls": {
+            //"command": "ccls",
+            //"filetypes": [
+                //"c",
+                //"cpp",
+                //"objc",
+                //"objcpp"
+            //],
+            //"rootPatterns": [
+                //".ccls",
+                //"compile_commands.json",
+                //".vim/",
+                //".git/",
+                //".hg/"
+            //],
+            //"initializationOptions": {
+                //"cache": {
+                    //"directory": "/tmp/ccls"
+                //}
+            //}
+        //}
+  //}
 }

@@ -8,7 +8,7 @@ if exists('g:plugs["defx.nvim"]')
     \ 'split'              : 'vertical',
     \ 'direction'          : 'topleft',
     \ 'buffer_name'        : 'defx',
-    \ 'columns'            : 'git:indent:icons:filename',
+    \ 'columns'            : 'git:indent:icons:space:filename',
     \ 'show_ignored_files' : 0,
     \ 'toggle'             : 1,
     \ 'resume'             : 1,
